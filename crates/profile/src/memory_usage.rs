@@ -27,9 +27,9 @@ impl MemoryUsage {
     pub fn now() -> MemoryUsage {
         cfg_if! {
             if #[cfg(all(feature = "jemalloc", not(target_env = "msvc")))] {
-                jemalloc_ctl::epoch::advance().unwrap();
+                tikv_jemalloc_ctl::epoch::advance().unwrap();
                 MemoryUsage {
-                    allocated: Bytes(jemalloc_ctl::stats::allocated::read().unwrap() as isize),
+                    allocated: Bytes(tikv_jemalloc_ctl::stats::allocated::read().unwrap() as isize),
                 }
             } else if #[cfg(all(target_os = "linux", target_env = "gnu"))] {
                 memusage_linux()
