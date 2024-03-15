@@ -17,7 +17,7 @@ cfg-if = "1.0.0"
 la-arena.workspace = true
 libc.workspace = true
 countme = { version = "3.0.1", features = ["enable"] }
-tikv-jemallocator = { git = "https://github.com/yuce/tikv-jemallocator.git", rev = "0.5.1", optional = true }
+tikv-jemalloc-ctl = { git = "https://github.com/yuce/tikv-jemallocator.git", branch = "use-latest-jemallocator", optional = true }
 # jemalloc-ctl = { version = "0.5.0", package = "tikv-jemalloc-ctl", optional = true }
 
 [target.'cfg(target_os = "linux")'.dependencies]
@@ -28,7 +28,7 @@ winapi = { version = "0.3.9", features = ["processthreadsapi", "psapi"] }
 
 [features]
 cpu_profiler = []
-jemalloc = ["tikv-jemallocator"]
+jemalloc = ["tikv-jemalloc-ctl"]
 
 # Uncomment to enable for the whole crate graph
 # default = [ "cpu_profiler" ]

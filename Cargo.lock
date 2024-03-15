@@ -1187,6 +1187,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "paste"
+version = "1.0.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "de3145af08024dea9fa9914f381a17b8fc6034dfb00f3a84013f7ff43f29ed4c"
+
+[[package]]
 name = "paths"
 version = "0.0.0"
 
@@ -1308,7 +1314,7 @@ dependencies = [
  "libc",
  "once_cell",
  "perf-event",
- "tikv-jemallocator",
+ "tikv-jemalloc-ctl",
  "winapi",
 ]
 
@@ -1845,9 +1851,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "tikv-jemalloc-ctl"
+version = "0.5.4"
+source = "git+https://github.com/yuce/tikv-jemallocator.git?branch=use-latest-jemallocator#166409d57e4d67cbfb951c7168fe51b811ce2eb0"
+dependencies = [
+ "libc",
+ "paste",
+ "tikv-jemalloc-sys",
+]
+
+[[package]]
 name = "tikv-jemalloc-sys"
 version = "0.5.4+5.3.0-patched"
-source = "git+https://github.com/yuce/tikv-jemallocator.git?rev=0.5.1#6afbb1aef52ef225f1d5a9e014745757eb7e0eba"
+source = "git+https://github.com/yuce/tikv-jemallocator.git?branch=use-latest-jemallocator#166409d57e4d67cbfb951c7168fe51b811ce2eb0"
 dependencies = [
  "cc",
  "libc",
@@ -1856,7 +1872,7 @@ dependencies = [
 [[package]]
 name = "tikv-jemallocator"
 version = "0.5.4"
-source = "git+https://github.com/yuce/tikv-jemallocator.git?rev=0.5.1#6afbb1aef52ef225f1d5a9e014745757eb7e0eba"
+source = "git+https://github.com/yuce/tikv-jemallocator.git?branch=use-latest-jemallocator#166409d57e4d67cbfb951c7168fe51b811ce2eb0"
 dependencies = [
  "libc",
  "tikv-jemalloc-sys",
